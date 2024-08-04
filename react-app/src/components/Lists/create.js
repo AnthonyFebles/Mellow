@@ -6,7 +6,7 @@ import { createLists, readLists } from "../../store/lists";
 import { useModal } from "../../context/Modal";
 import "./Lists.css";
 
-const ListForm = ({boardId, setClicked }) => {
+const ListForm = ({ boardId, setClicked }) => {
 	const dispatch = useDispatch();
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState("");
@@ -15,7 +15,9 @@ const ListForm = ({boardId, setClicked }) => {
 	const payload = { name };
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();
+		if (e) {
+			e.preventDefault();
+		}
 		setErrors({});
 		setClicked(false);
 		try {
@@ -35,7 +37,6 @@ const ListForm = ({boardId, setClicked }) => {
 	}, [dispatch, boardId]);
 
 	if (errors) {
-		
 	}
 
 	return (
@@ -52,8 +53,16 @@ const ListForm = ({boardId, setClicked }) => {
 					required
 				/>
 				<div className="new-list-btns">
-					<button type="submit" className="submitButton">Add list</button>
-					<button type='button' onClick={() => handleSubmit()} className="x">X</button>
+					<button
+						type="submit"
+						className="submitButton"
+						onClick={() => handleSubmit()}
+					>
+						Add list
+					</button>
+					<button type="button" className="x" onClick={() => setClicked(false)}>
+						X
+					</button>
 				</div>
 			</form>
 		</div>
