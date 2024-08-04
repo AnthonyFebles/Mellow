@@ -161,7 +161,14 @@ const List = (boardColor) => {
 			<div className={`lists__container ${listImage}`}>
 				<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
 				<div className="create_list_container">
-					<button
+					<OpenModalButton
+						className={"create_list_button"}
+						buttonText="Add another list"
+						onButtonClick={closeMenu}
+						modalComponent={<ListForm board_id={id} />}
+					/>
+
+					{/* <button
 						className={"create_list_button"}
 						buttonText={
 							<div className="new-list-container">
@@ -180,7 +187,7 @@ const List = (boardColor) => {
 							</div>
 						)}
 						{clicked && <ListForm boardId={id} setClicked={setClicked} />}
-					</button>
+					</button> */}
 				</div>
 				<div className="lists__group"></div>
 
