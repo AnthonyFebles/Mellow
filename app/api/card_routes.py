@@ -71,3 +71,8 @@ def delete_card(boardId, listId, cardId):
         return {"message": "Card deleted"}
 
     return {"errors": "Card not found"}, 404
+
+
+
+
+        
